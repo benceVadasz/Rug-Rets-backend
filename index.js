@@ -2,13 +2,14 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import designRoute from './routes/shape.js'
-import userRoutes from './routes/users.js'
+import shapeRoute from './routes/shape.js'
+import userRoutes from './routes/user.js'
 
 const app = express();
 
+app.use(express.json());
 app.use(cors());
-app.use('/design', designRoute);
+app.use('/shape', shapeRoute);
 app.use('/user', userRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))

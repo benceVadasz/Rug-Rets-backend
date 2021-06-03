@@ -9,5 +9,5 @@ const postSchema = mongoose.Schema({
     }
 })
 
-const postDesign = mongoose.model('postDesign', postSchema)
-export default postDesign;
+const postShape = mongoose.model('postShape', postSchema)
+export default postShape;

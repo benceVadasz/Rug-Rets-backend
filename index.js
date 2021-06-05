@@ -4,12 +4,14 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import shapeRoute from './routes/shape.js'
 import userRoutes from './routes/user.js'
+import colorRoute from './routes/color.js'
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
-app.use('/shape', shapeRoute);
+app.use('/shapes', shapeRoute);
+app.use('/colors', colorRoute);
 app.use('/user', userRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))

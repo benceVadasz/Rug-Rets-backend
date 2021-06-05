@@ -13,13 +13,13 @@ export const getShapes = async (req, res) => {
 }
 
 export const uploadShape = async (req, res) => {
-    const design = req.body;
-    const newDesign = new PostShape(design)
+    const shape = req.body;
+    const newShape = new PostShape({...shape, user: req.userId, createdAt: new Date().toISOString()})
 
     try {
-        await newDesign.save();
+        await newShape.save();
 
-        res.status(201).json(newDesign);
+        res.status(201).json(newShape);
     } catch (error) {
         res.status(409).json({message: error.message})
     }

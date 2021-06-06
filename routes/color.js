@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.get("/:id", getColors);
 router.post("/", auth, uploadColor);
-router.post("/:id", auth, deleteColor);
+router.delete("/:id", auth, deleteColor);
 
 export default router;

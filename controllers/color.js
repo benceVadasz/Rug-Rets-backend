@@ -27,10 +27,8 @@ export const uploadColor = async (req, res) => {
 
 export const deleteColor = async (req, res) => {
     const { id } = req.params;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-
-    await PostColor.findByIdAndRemove(id);
+    console.log('value', id)
+    await PostColor.deleteOne({"_id": id});
 
     res.json({ message: "Shape deleted successfully." });
 }

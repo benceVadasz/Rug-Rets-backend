@@ -4,9 +4,7 @@ import mongoose from 'mongoose';
 export const getColors = async (req, res) => {
     try {
         const userId = req.params.id;
-        console.log('id', userId)
         const color = await PostColor.find({user: userId});
-        console.log('colors', color)
         res.status(200).json(color)
     } catch (error) {
         res.status(400).json({message: error.message})
@@ -26,9 +24,14 @@ export const uploadColor = async (req, res) => {
 }
 
 export const deleteColor = async (req, res) => {
-    const { id } = req.params;
-    console.log('value', id)
+    const {id} = req.params;
     await PostColor.deleteOne({"_id": id});
 
-    res.json({ message: "Shape deleted successfully." });
+    res.json({message: "Shape deleted successfully."});
+}
+
+export const checkIfColorExists = async (req, res) => {
+    const hex = req?.body;
+    const matches = await PostColor.find({value: hex.value});
+    res.json({matches});
 }

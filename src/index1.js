@@ -2,11 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import shapeRoute from './src/routes/shape.js'
-import userRoutes from './src/routes/user.js'
-import colorRoute from './src/routes/color.js'
-import designRoute from './src/routes/design.js'
-import postRoute from './src/routes/post.js'
+import shapeRoute from './routes/shape.js'
+import userRoutes from './routes/user.js'
+import colorRoute from './routes/color.js'
+import designRoute from './routes/design.js'
+import postRoute from './routes/post.js'
 
 const app = express();
 

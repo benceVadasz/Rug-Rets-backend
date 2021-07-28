@@ -2,10 +2,9 @@
   "name": "Rug-Rets-Backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index1.js",
-  "type": "module",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node ./dist/index.ts",
+    "start": "ts-node ./src/index.ts",
     "dev": "nodemon ./src/index.ts"
   },
   "keywords": [],
@@ -14,7 +13,7 @@
   "dependencies": {
     "@types/cors": "^2.8.12",
     "apollo-server": "^2.25.1",
-    "apollo-server-express": "^3.0.2",
+    "apollo-server-express": "^2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

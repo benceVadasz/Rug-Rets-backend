@@ -19,8 +19,11 @@ const startServer = async () => {
 
     server.applyMiddleware({app});
 
-    await mongoose.connect("mongodb://localhost:27017/test3", {
-        useNewUrlParser: true
+    const CONNECTION_URL = "mongodb+srv://vadaszbence:EDpvmmkb439qYee@cluster0.x44no.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+
+    await mongoose.connect(CONNECTION_URL, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
     });
 
     app.listen({port: 4000}, () =>

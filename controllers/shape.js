@@ -1,10 +1,9 @@
-import PostShape from "../models/postShape.js";
+import PostShape from "../models/Shape.js";
 import mongoose from 'mongoose';
 
 export const getShapes = async (req, res) => {
     try {
         const designs = await PostShape.find();
-        console.log(designs)
 
         res.status(200).json(designs)
     } catch (error) {

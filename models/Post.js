@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
 const postSchema = mongoose.Schema({
-    name: String,
-    file: String,
+    message: String,
+    selectedFile: String,
     user: String,
     createdAt: {
         type: Date,
@@ -10,5 +10,5 @@ const postSchema = mongoose.Schema({
     }
 })
 
-const postShape = mongoose.model('postShape', postSchema)
-export default postShape;
+const Post = mongoose.model('post', postSchema)
+export default Post;

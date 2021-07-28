@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const colorSchema = mongoose.Schema({
+const postSchema = mongoose.Schema({
     name: String,
-    value: String,
+    file: String,
     user: String,
     createdAt: {
         type: Date,
@@ -10,5 +10,5 @@ const colorSchema = mongoose.Schema({
     }
 })
 
-const postColor = mongoose.model('postColor', colorSchema)
-export default postColor;
+const shape = mongoose.model('shape', postSchema)
+export default shape;

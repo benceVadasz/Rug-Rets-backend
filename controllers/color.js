@@ -1,10 +1,10 @@
-import PostColor from "../models/postColor.js";
+import Color from "../models/Color.js";
 import mongoose from 'mongoose';
 
 export const getColors = async (req, res) => {
     try {
         const userId = req.params.id;
-        const color = await PostColor.find({user: userId});
+        const color = await Color.find({user: userId});
         res.status(200).json(color)
     } catch (error) {
         res.status(400).json({message: error.message})
@@ -14,7 +14,7 @@ export const getColors = async (req, res) => {
 export const uploadColor = async (req, res) => {
     const colorData = req?.body;
 
-    const newColor = new PostColor({...colorData, user: req.userId, createdAt: new Date().toISOString()})
+    const newColor = new Color({...colorData, user: req.userId, createdAt: new Date().toISOString()})
     try {
         await newColor.save();
         res.status(201).json(newColor);
@@ -25,13 +25,13 @@ export const uploadColor = async (req, res) => {
 
 export const deleteColor = async (req, res) => {
     const {id} = req.params;
-    await PostColor.deleteOne({"_id": id});
+    await Color.deleteOne({"_id": id});
 
     res.json({message: "Shape deleted successfully."});
 }
 
 export const checkIfColorExists = async (req, res) => {
     const hex = req?.body;
-    const matches = await PostColor.find({value: hex.value});
+    const matches = await Color.find({value: hex.value});
     res.json({matches});
 }

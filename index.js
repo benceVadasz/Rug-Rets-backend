@@ -5,17 +5,20 @@ import cors from 'cors';
 import shapeRoute from './routes/shape.js'
 import userRoutes from './routes/user.js'
 import colorRoute from './routes/color.js'
+import designRoute from './routes/design.js'
+import postRoute from './routes/post.js'
 
 const app = express();
 
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({ limit: "50mb", extended: true }))
 app.use(cors());
 app.use('/shapes', shapeRoute);
 app.use('/colors', colorRoute);
 app.use('/user', userRoutes);
+app.use('/designs', designRoute);
+app.use('/posts', postRoute);
 
-app.use(bodyParser.json({ limit: "30mb", extended: true }))
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
 
 const CONNECTION_URL = "mongodb+srv://vadaszbence:EDpvmmkb439qYee@cluster0.x44no.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const PORT = process.env.PORT || 5000;

@@ -2,8 +2,10 @@ import {ApolloServer, gql} from "apollo-server-express";
 import express from 'express';
 import mongoose from 'mongoose'
 import cors from "cors";
-import {resolvers} from "./resolvers";
-import {typeDefs} from "./typeDefs";
+import {schema} from "./schema/index.js";
+import {typeDefs} from "./schema/typeDefs"
+import fs from 'fs';
+import path from 'path';
 
 
 const startServer = async () => {
@@ -12,9 +14,10 @@ const startServer = async () => {
     app.use(express.urlencoded({limit: "50mb", extended: true}))
     app.use(cors());
 
+
     const server = new ApolloServer({
         typeDefs,
-        resolvers
+        schema
     });
 
     server.applyMiddleware({app});
